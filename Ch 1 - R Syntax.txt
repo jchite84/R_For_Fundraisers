@@ -1,0 +1,48 @@
+#An Introduction to R and R Syntax
+***
+## Learning Objectives
+1. To introduce the user to the R programming language
+2. To introduce the user to R commands and scripting
+3. To provide a foundation for understanding coding projects in the remainder of the book
+***
+## Packages Required
+1. None
+
+***
+## The Problem
+
+You are interested in doing higher level analysis of your fundraising data, and your old tools (Excel) are no longer cutting it. You need a tool that can handle advanced functions, gives you maximum control over your data, and is cost effective. Perhaps you've heard of R and maybe even downloaded it, but one look at all those lines of code left your eyes crossed. 
+***
+
+1. What is R 
+	* A brief Introduction
+	* The R Workspace
+		* Console
+		* Script
+		* Plot Window
+		* Directories
+2. Data Types, Operators, and Functions
+	* Vectors, Matrices, Arrays, Data Frames, Lists, Factors
+	* Arithmatic, Logical, Boolean, Assignment
+	* Built-In Functions
+		* Calls and Arguments
+	* Packages
+		* Installing Packages
+		* Loading Packages
+3. Data Input and Output
+	* Importing Various Data Sources
+	* Saving Various Data Sources
+	* Data Creation
+4. Merging, Slicing, and Extracting Data
+	* Merging
+		* Bind, Merge
+	* Indexing, Subsetting
+	* Sorting, Filtering, Etc
+6. Defining Functions
+	* Function Syntax
+	* Control Flow Statements
+
+
+
+
+
