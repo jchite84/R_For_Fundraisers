@@ -19,11 +19,14 @@ You are interested in doing higher level analysis of your fundraising data, and 
 	* The R Workspace
 		* Console
 		* Script
-		* Plot Window
+		* Data View
+		* Graphics Window
 		* Directories
-2. Data Types, Operators, and Functions
-	* Vectors, Matrices, Arrays, Data Frames, Lists, Factors
+2. Variable Types, Data Types, Operators, and Functions
+	* Numbers, Strings, Factors
+	* Vectors, Matrices, Arrays, Data Frames, Lists
 	* Arithmatic, Logical, Boolean, Assignment
+	* Comments
 	* Built-In Functions
 		* Calls and Arguments
 	* Packages
@@ -41,8 +44,139 @@ You are interested in doing higher level analysis of your fundraising data, and 
 6. Defining Functions
 	* Function Syntax
 	* Control Flow Statements
+	
+	
+1.1 What is R?
 
+R is a statistical programming language developed in 1993 by Ross Ihaka and Robert Gentleman at the University of Aukland, New Zealand. It is free as in beer and free as in speech. R is avaiable under the GNU General Public License. 
 
+The first step, if you haven't already done this, is to download and install the R language and environment. The base software package can be found at [https://www.r-project.org](https://www.r-project.org/mirrors.html). R is an interpretted programming language, which means that code is interpreted and compiled directly in the environment. So, there is no need to download additional software. However, some users prefer to use one of the many integrated development environments (IDEs) available for R. IDEs can provide some functionality in the form of additonal options, menus, or user interface. If you choose to install an IDE, it should be installed *after* installing the R base package. Some of the most popular options are RStudio, RKWard, and FasteR. By far the most popular IDE is RStudio, but none are necessary, and nothing beyond the base R package will be required for the exercises in this book. 
 
+1.2 The R Workspace
 
+Some instances of R will install 2 shortcuts, i386 and x64. You should know if your operating system is a 32 or 64 bit system and choose the appropriate link. The main parts fo the workspace are the R Console Window, the R Editor or Script Window, The Data View Window, and the Graphics Window. 
 
+1.2.1 R Console
+
+When you open R the console will automatically open. Some IDEs will have variation on what is visible in the home view, but the basic pieces will be the same. The console is a window that runs commands and returns outputs. Commands can be typed directly into the console and run. Type "1+1" (without quotes) and hit enter. The output should look something like this "[1] 2". Meaning your output is one line long, and the actual output is 2. 
+
+1.2.2 R Editor
+
+Generaly commands are not typed directly into the console. Go to File and hit "New Script". A blank window should open in the workspace. Again, type "1+1", but this time in the editor. Highlight the command, right click, and hit "Run line or selection". You should see your line of code and the output in the console window. Scripts are invaluable, especially as your code become longer and more complex, you need to revisit pieces of code to rerun or use for anothe project, or you need to share your code. It also makes it much easier to test and fix errors in code without having to retype entire commands. 
+
+1.2.3 Data View and Graphics
+
+The remaining windows: the Data View Window and the Graphics Window are used to display special kinds of data output separate from the console. The Data View can be used to view data outside of the console in a tabular form. This makes it possible to view changes made to data during processing, and looks similar to a spreadsheet. The biggest difference being that data cannot be manipulated in the Data View Window, it can only be manipulated at the command line. The Graphics Window is used to display charts, graphs, and other graphical output. These two views will become more important later, but we need to learn a little more about the language to call the commands that make use of these windows. 
+
+2.1 Variable Types, Operators, Data Types, and Functions
+
+This section will introduce the building blocks of the R language: variable types, operators, data types, and functions. These peices are really the building blocks of all programming languages, so readers who know another programming language may already be familiar with them. If R is your first foray into programming, then this section will be valuable as you expand your knowledge of technical computing and programming. 
+
+2.2 Variable Types
+
+When you load data into R, the program needs to know in what ways each piece of data can be manipulated. This is achieved by the assignment of a variable type. Generally each column of your data will automatically get assigned a variable type. The basic variable types are Numbers, Strings, and Factors. 
+
+2.2.1 Numbers
+
+Numbers or Numeric Vectors are entities that mathematic operations can be performed on. Numbers in R come in 2 types: Integers, and Double Precision Numbers. Integers are simply numbers with no decimal point (eg 2, 3, 25, 456000). Double Precision Numbers are those with a decimal point (1.0, 3.5, pi, 456 X 10 ^-10). By default R treats all numbers as doubles, though, they can be coerced into integers. For the most part it is not necessary to coerce double precision numbers into integers. 
+
+2.2.2 Strings
+
+Strings are how R stores text. Strings are demarcated with quotation marks. Single and double quotation marks are recognized in R, but like other programming languages it is important to be careful which you use based on other punctuation. Think of the difference between "Roger's Cars" and 'Roger's Cars'. You can see how the second example might cause an issue when it comes time for R to figure out where the beginning and end of the string is. The smallest unit of a string is the character. If "Roger's Cars" is a string, the caracters are "R", "o", "g", "e", "r", "'", "s", " ", "C", "a", "r", "s". Notice that the space is considered a character. This means that "Roger" and "Roger " are two different strings. Numbers can also be strings if they are in quotation marks. So R will interpret 3.14 and "3.14" differently. Mathematical functions cannot be performed on numbers recognized as strings. Numbers can be coerced to and from strings. 
+
+2.2.3 Factors
+
+Factors can be strings or numbers, a set of factors has a discrete set of possible values. Examples of factors in a data set might include State, Zip Code, Target Ask Amount, or Solicitor. Like numbers stored as strings, numbers stored as factors cannot be mathematically manipulated. Factors can be coerced to strings and numbers, and both strings and numbers can be coerced to factors.
+
+2.3 Operators 
+
+Operators are objects that are capable of manipulating a value. R supports several types of operator: assignment, arithmatic, and logical. Most operators should be familiar from their use in basic mathematics or from their use in Excel or your databases. 
+
+2.3.1 The Assignment Operator
+
+The only potentially unusual operator is the assignment operator. The assignment operator allows a user to map almost anything (a table, a function, a single value) to a variable name and recall that thing by calling the variable name. The assignment operator in R is comprised of 2 characters the "less than" symbol and the hyphen. It looks a left pointing arrow "<-".
+
+2.3.2 Arithmatic Operators
+
+Arithmatic operators are those that you learned in primary school and have used nearly your whole life since, the only execptions might be Modulus and Integer Division. 
+
+<table>
+<tr>
+<td> Operator </td> <td> Meaning </>
+</tr>
+<tr>
+<td> + </td> <td> Addition </td>
+</tr>
+<tr>
+<td> - </td> <td> Subtraction </td>
+</tr>
+<tr>
+<td> * </td> <td> Multiplication </td>
+</tr>
+<tr>
+<td> ^ or ** </td> <td> Exponentiation </td>
+</tr>
+<tr>
+<td> %% </td> <td> Modulus Division (Returns the Remainder after Division) </td>
+</tr>
+<tr>
+<td> %/% </td> <td> Integer Division (Returns only the whole number with no remainder or decimal) </td>
+</tr>
+</table>
+
+Operators can be combined with parentheses and follow the familiar order of operations: Parentheses, Exponents, Multiplication, Division, Addition, Subtraction. The pneumonic device that I learned in school was "Please Excuse My Dear Aunt Sally". 
+
+2.3.3 Logical Operators
+
+Logical operators are common in set or discrete mathematics. They are most commonly used in R when subsetting data. They are less common in primarly mathematics, but are common in both Excel and databases. 
+
+<table>
+<tr>
+<td> Operator </td> <td> Meaning </>
+</tr>
+<tr>
+<td> & </td> <td> Conjunction (And) </td>
+</tr>
+<tr>
+<td> | </td> <td> Disjunction (Or) </td>
+</tr>
+<tr>
+<td> ! </td> <td> Not </td>
+</tr>
+<tr>
+<td> == </td> <td> Exactly Equal To </td>
+</tr>
+<tr>
+<td> != </td> <td> Not Equal To </td>
+</tr>
+<tr>
+<td> < </td> <td> Less Than </td>
+</tr>
+<tr>
+<td> > </td> <td> Greater Than </td>
+</tr>
+<tr>
+<td> <= </td> <td> Less Than or Equal To </td>
+</tr>
+<tr>
+<td> >= </td> <td> Greater Than or Equal To </td>
+</tr>
+</table>
+
+Logicals can also be combined within parentheses or brackets. Logicals also have an order of operations: Parentheses, Not, And, Or. Inequalities are evaluated from left to right. Along with the logical operators are the Boolean values TRUE and FALSE. In R these values must be capitalized to differentiate them from the potential string or assignment "True" or "False". 
+
+2.3.4 Operators in Action
+
+Now that you've got the basic operators at your disposal, it might be a good idea to get a little practice before moving on. Let's assign a few terms and see how they can be combined. In the R script window, type out the following lines of code:
+
+a <- "Foo"
+b <- 7
+c <- 5 + 5
+d <- "17"
+e <- b + c
+
+Now highlight, right click, and run all the selected code. You can see how the code is evaluated by calling one or more variable. In the console type "e" (without quotes), you should get "[1] 17" returned. Now try "b > c", which should return the Boolean "FALSE". Notice that "d" is a number that has been expressed as a string. Attempting to evaluate "b + d" should return an error "Error in b + d : non-numeric argument to binary operator". This is because strings and numbers cannot be evalutated mathematically. However, unassiged numbers and assigned values can be combined. Try "17 + c", which sould return "[1] 27". Experiment with combining values with parentheses and with other operators. Notice that each operator evaluates to a single value. Trying to return a and d using either "a & d" or "a,d", though both strings, will result in an error. R provides several ways of bundling outputs that we will get to momentarily. It is also common for Boolean values to be expressed as the numeric values 1 and 0. By default all numeric values other than 0 are TRUE and 0 is FALSE. To test this, evaluate the logical statement "b & c". Now assign a new value f <- 0, and evaluate "b & f". Assignment variables do not have to consist of a single letter. The names should be useful for you and for anybody who might need to read your code in the future. Assigned names cannot contain spaces. If it is necessary to use names that contain more than one word, the most common solutions are to use the underscore "two_words", the period "two.words", or camel case "TwoWords". Readability and understanding are of the highest importance, but another factor to take into consideration is interaction with other programming languages. R code can be called inside other programming languages such as Python or C/C++. If you are planning on integrating into another language it is best to use the naming conventions of that language to avoid bugs in your code.   
+
+2.4.1 Functions
+
+A function is a procedure that performs a specific task. R comes with a large set of built in functions for performing numerous tasks. In R a function is called using the format "call()". Operators are technically a special kind of function, but are set apart by their use of a different syntax. Some functions take arguments as inputs. The format of such functions is "call(argument1, argument2...)". R also provides you with the ability to create your own functions, and we will review that later in this chapter. First let's call a few useful functions. In the previous section we created some assignments. What if we had lots of assignments and we needed to remember what we named everything? Calling the function ls() will provide a list of objects. Type the call and run the function. Notice that this function doesn't take any arguments. Suppose that things are starting to get cluttered, or we've got objects that we no longer need. Calling the function rm(x) will delete specified objects. Call and run rm(a, d). This will delete our data sets that contained the strings. The rm() function takes at least one argument, but can take multiple, if you need to delete multiple objects, like we just did. Now call ls() again to confirm that the objects were removed. 
