@@ -57,7 +57,7 @@ You are interested in doing higher level analysis of your fundraising data, and 
 R is a statistical programming language developed in 1993 by Ross Ihaka and Robert Gentleman at the University of Aukland, New Zealand. It is free as in beer and free as in speech. R is available under the GNU General Public License. 
 
 The first step, if you haven't already done this, is to download and install the R language and environment. The base software package can be found at 
-[https://www.r-project.org](https://www.r-project.org/mirrors.html](https://www.r-project.org](https://www.r-project.org/mirrors.html). R is an interpreted programming language, which means that code is interpreted and compiled directly in the environment. So, there is no need to download additional software. However, some users prefer to use one of the many integrated development environments (IDEs) available for R. IDEs can provide some functionality in the form of additional options, menus, or a friendlier user interface. If you choose to install an IDE, it should be installed *after* installing the R base package. Some of the most popular options are RStudio, RKWard, and FasteR. By far the most popular IDE is RStudio, but none are necessary, and nothing beyond the base R package will be required for the exercises in this book. 
+[https://www.r-project.org]( https://www.r-project.org/mirrors.html) R is an interpreted programming language, which means that code is interpreted and compiled directly in the environment. So, there is no need to download additional software. However, some users prefer to use one of the many integrated development environments (IDEs) available for R. IDEs can provide some functionality in the form of additional options, menus, or a friendlier user interface. If you choose to install an IDE, it should be installed *after* installing the R base package. Some of the most popular options are RStudio, RKWard, and FasteR. By far the most popular IDE is RStudio, but none are necessary, and nothing beyond the base R package will be required for the exercises in this book. 
 
 ###1.2 The R Workspace
 
@@ -126,14 +126,14 @@ Logical operators are common in set or discrete mathematics. They are most commo
 |Operator | Meaning   |
 |---------|-----------|
 |& |Conjunction (And)  |
-|||  |Disjunction (Or)|
+|\|  |Disjunction (Or)|
 |! |Not|
 |==|Exactly Equal To|
 |!=|Not Equal To|
 |<|Less Than|
 |>|Greater Than|
 |<=|Less Than or Equal To|
-|>=|Greater Than or Equal To|
+|\>=|Greater Than or Equal To|
 
 Logicals can also be combined within parentheses or brackets. Logicals also have an order of operations: Parentheses, Not, And, Or. Inequalities are evaluated from left to right. Along with the logical operators are the Boolean values TRUE and FALSE. In R these values must be capitalized to differentiate them from the potential string or assignment "True" or "False". 
 
