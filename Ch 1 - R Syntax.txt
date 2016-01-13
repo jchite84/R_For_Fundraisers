@@ -56,7 +56,8 @@ You are interested in doing higher level analysis of your fundraising data, and 
 
 R is a statistical programming language developed in 1993 by Ross Ihaka and Robert Gentleman at the University of Aukland, New Zealand. It is free as in beer and free as in speech. R is available under the GNU General Public License. 
 
-The first step, if you haven't already done this, is to download and install the R language and environment. The base software package can be found at [https://www.r-project.org](https://www.r-project.org/mirrors.html). R is an interpreted programming language, which means that code is interpreted and compiled directly in the environment. So, there is no need to download additional software. However, some users prefer to use one of the many integrated development environments (IDEs) available for R. IDEs can provide some functionality in the form of additional options, menus, or user interface. If you choose to install an IDE, it should be installed *after* installing the R base package. Some of the most popular options are RStudio, RKWard, and FasteR. By far the most popular IDE is RStudio, but none are necessary, and nothing beyond the base R package will be required for the exercises in this book. 
+The first step, if you haven't already done this, is to download and install the R language and environment. The base software package can be found at 
+[https://www.r-project.org](https://www.r-project.org/mirrors.html](https://www.r-project.org](https://www.r-project.org/mirrors.html). R is an interpreted programming language, which means that code is interpreted and compiled directly in the environment. So, there is no need to download additional software. However, some users prefer to use one of the many integrated development environments (IDEs) available for R. IDEs can provide some functionality in the form of additional options, menus, or a friendlier user interface. If you choose to install an IDE, it should be installed *after* installing the R base package. Some of the most popular options are RStudio, RKWard, and FasteR. By far the most popular IDE is RStudio, but none are necessary, and nothing beyond the base R package will be required for the exercises in this book. 
 
 ###1.2 The R Workspace
 
@@ -125,7 +126,7 @@ Logical operators are common in set or discrete mathematics. They are most commo
 |Operator | Meaning   |
 |---------|-----------|
 |& |Conjunction (And)  |
-|\|  |Disjunction (Or)|
+|||  |Disjunction (Or)|
 |! |Not|
 |==|Exactly Equal To|
 |!=|Not Equal To|
@@ -150,10 +151,67 @@ Now that you've got the basic operators at your disposal, it might be a good ide
 
 Now highlight, right click, and run all the selected code. You can see how the code is evaluated by calling one or more variable. In the console type "e" (without quotes), you should get "[1] 17" returned. Now try "b > c", which should return the Boolean "FALSE". Notice that "d" is a number that has been expressed as a string. Attempting to evaluate "b + d" should return an error "Error in b + d : non-numeric argument to binary operator". This is because strings and numbers cannot be evaluated mathematically. However, unassigned numbers and assigned values can be combined. Try "17 + c", which should return "[1] 27". Experiment with combining values with parentheses and with other operators. Notice that each operator evaluates to a single value. Trying to return a and d using either "a & d" or "a,d", though both strings, will result in an error. R provides several ways of bundling outputs that we will get to momentarily. It is also common for Boolean values to be expressed as the numeric values 1 and 0. By default all numeric values other than 0 are TRUE and 0 is FALSE. To test this, evaluate the logical statement "b & c". Now assign a new value f <- 0, and evaluate "b & f". Assignment variables do not have to consist of a single letter. The names should be useful for you and for anybody who might need to read your code in the future. Assigned names cannot contain spaces. If it is necessary to use names that contain more than one word, the most common solutions are to use the underscore "two_words", the period "two.words", or camel case "TwoWords". Readability and understanding are of the highest importance, but another factor to take into consideration is interaction with other programming languages. R code can be called inside other programming languages such as Python or C/C++. If you are planning on integrating into another language it is best to use the naming conventions of that language to avoid bugs in your code.   
 
-####2.4.1 Functions
+{needs added to}
+###2.4 Functions
 
 A function is a procedure that performs a specific task. R comes with a large set of built in functions for performing numerous tasks. In R a function is called using the format "call()". Operators are technically a special kind of function, but are set apart by their use of a different syntax. Some functions take arguments as inputs. The format of such functions is "call(argument1, argument2...)". R also provides you with the ability to create your own functions, and we will review that later in this chapter. First let's call a few useful functions. In the previous section we created some assignments. What if we had lots of assignments and we needed to remember what we named everything? Calling the function ls() will provide a list of objects. Type the call and run the function. Notice that this function doesn't take any arguments. Suppose that things are starting to get cluttered, or we've got objects that we no longer need. Calling the function rm(x) will delete specified objects. Call and run rm(a, d). This will delete our data sets that contained the strings. The rm() function takes at least one argument, but can take multiple, if you need to delete multiple objects, like we just did. Now call ls() again to confirm that the objects were removed. 
 
+Some functions can be used as the arguments for other functions. One such base function which gets used in this way is the c() function. This function combines its arguments, and we will see it in use in the next section. There we will talk about data types and some functions for creating more complex data. More often than not you will import data into R, rather than create it from scratch. However, creatind data from scratch will give you practice calling functions with arguments and helping you see the different ways that R interprets data.
+
+###2.5 Data Types
+
+R supports several ways of organizing data together, known as data types. In this section we will cover each of the data types and explain when they are used. The data types in R are Vectors, Matrices, Arrays, Lists, and Data Frames. In addition to allowing you to import and use more complicated data, the data types allow you to generate more than one output from an operation. For instance, you might want to see minimum and maximum values from a data set, or the median and a mean values. This can be achieved by returning your result as a list or as a matrix.  
+
+####2.4.1 Vectors
+
+Aside from the single the single value, the list is the simplest data type. A vector consists of a series of objects that are all the variable type. For example, you can have a vector that contains only numbers:
+	
+	vector.a <- c(2,4,5,7,8)
+	
+or only strings:
+	
+	vector.b <- c("cat", "dog", "parrot", "goldfish")
+	
+Here we see the use of the combine function (c()). The first example is taking five vectors of length one and combining them into a numeric vector of length five. The second example is taking four vectors of length one and combining them into one vector of length four. 
+	
+####2.4.2 Matrices
+
+A matrix (pluaral - matrices) is a two-dimensional data set where all of the objects are the same variable type. In R, when you define a matrix you must define the content and also the dimensions.
+
+	matrix.a <- matrix(c(2,3,4,1,8,9), nrow = 2, ncol = 3)
+	
+Calling matrix.a will return the following:
+
+	     [,1] [,2] [,3]
+	[1,]    2    4    8
+	[2,]    3    1    9
+
+The matrix function has 3 required arguments: the data, the number of rows, and the number of columns. It also contains several arguments that are set to defaults and that do not necessarily need filled in. You may have noticed that the matrix function defaults to arraging the data by column. However, setting the argument byrow to TRUE will override this default and provide different results. Try running the following function:
+
+	matrix.b <- matrix(c(2,3,4,1,8,9), nrow = 2, ncol = 3, byrow = TRUE)
+	
+Notice that the output has changed to:
+
+	     [,1] [,2] [,3]
+	[1,]    2    3    4
+	[2,]    1    8    9
+	
+Matricies can also be created by combining vectors of the same length. Try running the following code:
+	vector.a <- c(2,3,4)
+	vector.b <- c(5,6,7)
+	vector.c <- c(7,8,9)
+	
+	matrix.c <- matrix(c(vector.a, vector.b, vector.c), nrow = 3, ncol = 3)
+	
+Now check the resulting matrix. If you fail to set the defaults for rows and columns, the matrix will default to ncol = 1. Try removing the nrow and ncol arguments and check the results. 
+	
+####2.4.3 Arrays
+
+An array is an n-dimensional data set wehre all of the objects are the same variable type. Arrays are often used for coordinate data (x,y,z). 
+
+####2.4.4 Lists
+
+A list is a one dimensional data set, but it may contain different object types. 
 ***
 
 ####Why the Solution Works (Optional)
